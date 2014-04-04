@@ -1,0 +1,9 @@
+extends layout
+
+block content
+  h1 Ubuntu AWS AMIs
+  p Welcome to AWS CloudFormation Ubuntu AMI Mapping generator.
+  p Data taken directly from:
+    a(href='https://cloud-images.ubuntu.com/locator/ec2/') https://cloud-images.ubuntu.com/locator/ec2/
+
+  =JSON.stringify(ubuntu)
