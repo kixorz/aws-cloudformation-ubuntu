@@ -3,7 +3,31 @@ extends layout
 block content
   h1 Ubuntu AWS AMIs
   p Welcome to AWS CloudFormation Ubuntu AMI Mapping generator.
-  p Data taken directly from:
-    a(href='https://cloud-images.ubuntu.com/locator/ec2/') https://cloud-images.ubuntu.com/locator/ec2/
+  p Data loaded from&nbsp;
+    a(href='https://cloud-images.ubuntu.com/locator/ec2/') Ubuntu Cloud Image Locator
 
-  =JSON.stringify(ubuntu)
+  h2 Author
+  p Source for this page is available on&nbsp;
+    a(href='https://github.com/kixorz/aws-cloudformation-ubuntu') my GitHub
+  p Created by&nbsp;
+    a(href='https://github.com/kixorz') @kixorz
+
+  iframe(allowtransparency="true" frameborder="0" scrolling="no" src="//platform.twitter.com/widgets/follow_button.html?screen_name=kixorz" style="width:300px; height:20px;")
+
+  p Check out some of my AWS scripts:
+  ul
+    li
+      a(href='https://gist.github.com/kixorz/5778110') Cycle Elastic IP attached to Amazon EC2 instance
+    li
+      a(href='https://gist.github.com/kixorz/5209217') Running Cron jobs in Auto Scaling group
+    li
+      a(href='https://gist.github.com/kixorz/5146008') Updating Route 53 DNS records from EC2 instance
+
+  h2 CloudFormation Mappings
+  p (release date) - (release) - (storage type)
+  div
+    each release, r in mapped
+      each storage, s in release
+        if storage.version
+          h3 #{r} - Ubuntu #{storage.version} (#{storage.name}) - #{s}
+          pre=JSON.stringify(storage.mapping, null, '  ')
